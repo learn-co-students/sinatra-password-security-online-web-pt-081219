@@ -54,7 +54,7 @@ describe "App" do
 
   describe "POST '/login'" do 
     it 'returns a 200 status code' do 
-      user = User.create(:username => "student1", :password => "test")
+      user = User.create(:username => "student1", :password_digest => "test")
       visit '/login'
       fill_in "username", :with => "student1"
       fill_in "password", :with => "test"
@@ -67,7 +67,7 @@ describe "App" do
 
   describe "GET '/success'" do 
     it 'displays the username' do 
-      user = User.create(:username => "student1", :password => "test")
+      user = User.create(:username => "student1", :password_digest => "test")
       visit '/login'
       fill_in "username", :with => "student1"
       fill_in "password", :with => "test"
@@ -88,7 +88,7 @@ describe "App" do
 
   describe "GET '/logout'" do 
     it 'clears the session hash and redirects to home page' do 
-      user = User.create(:username => "student1", :password => "test")
+      user = User.create(:username => "student1", :password_digest => "test")
       visit '/login'
       fill_in "username", :with => "student1"
       fill_in "password", :with => "test"
